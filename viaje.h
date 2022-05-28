@@ -1,5 +1,5 @@
-//Iv·n Ricardo Paredes Avilez A01705083
-//26/05/2022
+//Iv√°n Ricardo Paredes Avilez A01705083
+//27/05/2022
 //viaje.h
 
 
@@ -23,7 +23,7 @@ class Viaje {
         double kilometros;
         double tarifa_kilometros;
 
-    //Se declaran los mÈtodos del objeto
+    //Se declaran los m√©todos del objeto
     public:
 
         //Constructores
@@ -69,7 +69,7 @@ double Viaje::calc_tarifa_por_km(double kilometros, double tarifa_por_km){
 }
 
 void Viaje::mostrar_tarifa_por_km(double kilometros, double tarifa_kilometros){
-    cout << "La suma de la tarifa por kilÛmetros recorridos es de: " << calc_tarifa_por_km(double kilometros, double tarifa_por_km) << endl;
+    cout << "La suma de la tarifa por kil√≥metros recorridos es de: " << calc_tarifa_por_km(double kilometros, double tarifa_por_km) << endl;
 }
 
 double Viaje::calc_tarifa_total(double kilometros, double tarifa_kilometros){
@@ -113,7 +113,7 @@ class TaxiLocal : public Viaje{
     private:
         bool horario_concurrido;
 
-    //MÈtodos
+    //M√©todos
     public:
         //Constructor
         TaxiLocal(int i_d, string tipo_viaje, string direccion_o, string direccion_d, double km, double tarifa_km, bool horario_concu):Viaje(i_d, tipo_viaje, direccion_o, direccion_d, km, tarifa_km){
@@ -138,7 +138,7 @@ double TaxiLocal::calc_tarifa_hora_concurrida(bool horario_concurrido, double ta
 }
 
 void TaxiLocal::mostrar_tarifa_por_hora_concurrida(bool horario_concurrido, double tarifa_kilometros){
-    cout << "La tarifa por kilÛmetro seg˙n la hora (concurrida o no) es de: " << calc_tarifa_hora_concurrida(bool horario_concurrido, double tarifa_kilometros);
+    cout << "La tarifa por kil√≥metro seg√∫n la hora (concurrida o no) es de: " << calc_tarifa_hora_concurrida(bool horario_concurrido, double tarifa_kilometros);
 }
 
 double TaxiLocal::calc_tarifa_total(double kilometros, double tarifa_kilometros, bool horario_concurrido){
@@ -163,7 +163,7 @@ class TaxiInterurbano : public Viaje{
         int num_pasajeros;
         int cant_equipaje;
 
-    //MÈtodos
+    //M√©todos
     public:
         //Constructor
         TaxiInterurbano(int i_d, string tipo_viaje, string direccion_o, string direccion_d, double km, double tarifa_km, int num_pas, int cant_equip):Viaje(i_d, tipo_viaje, direccion_o, direccion_d, km, tarifa_km){
@@ -193,7 +193,7 @@ double TaxiInterurbano::calc_tarifa_por_pasajero(double tarifa_kilometros, int n
 }
 
 void TaxiInterurbano::mostrar_tarifa_por_pasajero(double tarifa_kilometros, int num_pasajeros, int id){
-    cout << "La tarifa aplicada por n˙mero pasajeros en el viaje " << id << " fue de: " << 100*calc_tarifa_por_pasajero(double tarifa_kilometros, int num_pasajeros) << "%" << endl;
+    cout << "La tarifa aplicada por n√∫mero pasajeros en el viaje " << id << " fue de: " << 100*calc_tarifa_por_pasajero(double tarifa_kilometros, int num_pasajeros) << "%" << endl;
 }
 
 double TaxiInterurbano::calc_tarifa_por_equipaje(double tarifa_kilometros, int cant_equipaje){
@@ -230,7 +230,7 @@ class Flete : public Viaje{
     private:
         double peso_carga;
 
-    //MÈtodos
+    //M√©todos
     public:
         //Constructor
         Flete(int i_d, string tipo_viaje, string direccion_o, string direccion_d, double km, double tarifa_km, double peso_car):Viaje(i_d, tipo_viaje, direccion_o, direccion_d, km, tarifa_km){
