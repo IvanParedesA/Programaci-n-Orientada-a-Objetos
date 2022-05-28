@@ -5,9 +5,9 @@ El proyecto consiste en calcular los ingresos que genera una empresa de transpor
 
 Taxi Local: Tiene una tarifa especial cuando se encuentra en un horario concurrido (El doble del precio)
 
-Taxi Inter-urbano: Tiene una tarifa especial dependiendo de la cantidad de pasajeros y la cantidad de equipaje (25% por persona extra y 10% por cada uno de los equipajes)
+Taxi Inter-urbano: Tiene una tarifa especial dependiendo de la cantidad de pasajeros y la cantidad de equipaje (25% extra por persona excepto cuando es solo un ocupante y 5% extra por cada uno de los equipajes)
 
-Fletes: Tiene una tarifa especial dependiendo del peso de la carga (25% cada 200kg)
+Fletes: Tiene una tarifa especial dependiendo del peso de la carga (25% extra cada 200kg)
 
 El programa podrá calcular la tarifa específica de cada uno de los tipos de viajes incluyendo el monto total de todas las tarifas juntas del conjunto de todos los tipos de viaje.
 
