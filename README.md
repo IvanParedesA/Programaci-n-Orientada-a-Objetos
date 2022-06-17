@@ -1,5 +1,4 @@
-# Programacion-Orientada-a-Objetos
-Agencia de Transporte
+# TC1030 Proyecto: Agencia de Transporte
 
 El proyecto consiste en calcular los ingresos que genera una agencia de transporte a través de las tarifas que generan los distintos tipos de viajes que hay. Algo que debemos tener en cuenta es que los viajes comparten algunas características en común como: ubicación de origen y destino, id de viaje, una etiqueta con el tipo de viaje, una tarifa por kilómetro recorrido y una tarifa total. Sin embargo, en la siguiente lista podremos encontrar son los diferentes tipos de viajes disponibles junto con sus características distintivas:
 
