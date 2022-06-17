@@ -22,4 +22,7 @@ El programa consta de un menu con opciones y corre sobre consola
 # Consideraciones
 La clase principal que representa a la agencia, contiene dentro las clases que representan los tipos de viaje. Al usar elementos de composición para el proyecto, este dejaría de funcionar si la clase de la empresa es eliminada ya que al desaparecer ella, las demás clases también lo harían.
 
+El programa solo define un máximo de 1000 espacios en el arreglo de la agencia que guarda los viajes. Por esta razón si se rebasa esta cantidad de viajes introducidos, es posible que el programa deje de funcionar.
+
 El programa solo corre en la consola y esta hecho con c++ standard, así que corre en todos los sistemas operativos.
+
