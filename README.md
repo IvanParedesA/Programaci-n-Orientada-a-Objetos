@@ -10,11 +10,16 @@ Fletes: Tiene una tarifa especial dependiendo del peso de la carga (25% extra ca
 
 # Funcionalidad
 El programa permitirá ver la información de los viajes guardados en la memoria
+
 El programa podrá calcular los ingresos totales de la agencia de transporte
+
 El programa podrá calcular el ingreso total por tipo de viaje
+
 El programa le permitirá al usuario registrar más viajes de cualquiera de los tipos que hay
+
 El programa consta de un menu con opciones y corre sobre consola
 
 # Consideraciones
 La clase principal que representa a la agencia, contiene dentro las clases que representan los tipos de viaje. De esta manera tendríamos 4 clases, ya que la clase de "Viaje" es una clase abstracta. Al usar elementos de composición para el proyecto, este dejaría de funcionar si la clase de la empresa es eliminada ya que al desaparecer ella, las demás clases también lo harían.
+
 El programa solo corre en la consola y esta hecho con c++ standard, así que corre en todos los sistemas operativos.
