@@ -3,8 +3,8 @@
  *Proyecto Agencia de Transporte clase Viajes
  *Iván Ricardo Paredes Avilez
  *A01705083
- *10/06/2022
- *Version: 3
+ *16/06/2022
+ *Version: 4
  *Esta clase define el objeto Viaje que contiene las clases heredadas
  *TaxiLocal, TaxiInterurbano y Flete
  */
@@ -75,9 +75,16 @@ Viaje::Viaje(int i_d, string tipo_viaje, string direccion_o, string direccion_d,
 //Funciones de la clase
 
 /**
- *calc_tarifa_por_km calcula la tarifa por la cantidad de kilometros recorridos.
+ *calc_tarifa_por_km calcula la tarifa por la cantidad de
+ *kilometros recorridos.
  *
- *toma la cantidad de kilometros recorridos y los multiplica por la cuota que se tiene por cada kilómetro
+ *Toma la cantidad de kilometros recorridos y los multiplica por
+ *la cuota que se tiene por cada kilómetro
+ *
+ *@param No se tienen parámetros
+ *
+ *@return double con el valor de la tarifa por cantidad de
+ *kilómetros recorridos
  */
 double Viaje::calc_tarifa_por_km(){
     double tarifa = get_kilometros()*get_tarifa_kilometros();
@@ -85,9 +92,16 @@ double Viaje::calc_tarifa_por_km(){
 }
 
 /**
- *mostrar_tarifa_por_km muestra la tarifa por la cantidad de kilometros recorridos.
+ *mostrar_tarifa_por_km muestra la tarifa por la cantidad de
+ *kilometros recorridos.
  *
- *crea una salida de texto donde también se manda a llamar a la función calc_tarifa_por_km
+ *Crea una salida de texto donde también se manda a llamar a la
+ *función calc_tarifa_por_km para calcular la tarifa por la
+ *cantidad de kilómetros
+ *
+ *@param No se tienen parámetros
+ *
+ *@return No se devuelve ningún valor
  */
 void Viaje::mostrar_tarifa_por_km(){
     cout << "La suma de la tarifa por kilómetros recorridos es de: " << calc_tarifa_por_km() << endl;
@@ -133,7 +147,7 @@ class TaxiLocal: public Viaje{
         };
         //Constructor
         TaxiLocal(int i_d, string tipo_viaje, string direccion_o, string direccion_d, double km, double tarifa_km, bool horario_concu):Viaje(i_d, tipo_viaje, direccion_o, direccion_d, km, tarifa_km){
-            bool horario_concurrido = horario_concu;
+            horario_concurrido = horario_concu;
         }
 
         //Funciones
@@ -152,9 +166,17 @@ class TaxiLocal: public Viaje{
 
 //Funciones de la clase TaxiLocal
 /**
- *calc_tarifa_hora_concurrida calcula la tarifa por km en caso de que el viaje se haya realizado o no en un horario concurrido.
+ *calc_tarifa_hora_concurrida calcula la tarifa por km en
+ *caso de que el viaje se haya realizado o no en un horario
+ *concurrido.
  *
- *en caso de que se esté en un horario concurrido la tarifa por kilometro es del doble de precio.
+ *En caso de que se esté en un horario concurrido la
+ *tarifa por kilómetro es del doble de precio.
+ *
+ *@param No se tienen parámetros
+ *
+ *@return double con el valor de la tarifa cuando el viaje fue
+ *realizado o no en una hora concurrida
  */
 double TaxiLocal::calc_tarifa_hora_concurrida(){
     if (get_horario_concurrido() == true){
@@ -166,9 +188,16 @@ double TaxiLocal::calc_tarifa_hora_concurrida(){
 }
 
 /**
- *mostrar_tarifa_por_hora_concurrida muestra la tarifa por km en caso de que el viaje se haya realizado o no en un horario concurrido
+ *mostrar_tarifa_por_hora_concurrida muestra la tarifa por km
+ *en caso de que el viaje se haya realizado o no en un horario
+ *concurrido
  *
- *crea una salida de texto donde también se manda a llamar a la función calc_tarifa_hora_concurrida
+ *crea una salida de texto donde también se manda a llamar a la
+ *función calc_tarifa_hora_concurrida
+ *
+ *@param No se tienen parámetros
+ *
+ *@return No se devuelve ningún valor
  */
 void TaxiLocal::mostrar_tarifa_por_hora_concurrida(){
     if (get_horario_concurrido() == true){
@@ -182,33 +211,51 @@ void TaxiLocal::mostrar_tarifa_por_hora_concurrida(){
 /**
  *calc_tarifa_total calcula el costo total del viaje
  *
- *Se obtiene la tarifa por kilometro dependiendo del horario con la función calc_tarifa_hora_concurrida() y se multiplica por el total de kilometros
+ *Se obtiene la tarifa por kilometro dependiendo del horario con la
+ *función calc_tarifa_hora_concurrida() y se multiplica por el total
+ *de kilómetros
+ *
+ *@param No se tienen parámetros
+ *
+ *@return double con el valor total de la tarifa que se cobró al usuario
  */
 double TaxiLocal::calc_tarifa_total(){
-    return (calc_tarifa_hora_concurrida()*get_kilometros());
+    return calc_tarifa_hora_concurrida()*get_kilometros();
 }
 
 /**
  *mostrar_tarifa_total muestra el costo total del viaje
  *
- *crea una salida de texto donde también se manda a llamar a la función calc_tarifa_total
+ *Crea una salida de texto donde también se manda a llamar a la
+ *función calc_tarifa_total
+ *
+ *@param No se tienen parámetros
+ *
+ *@return No se devuelve ningún valor
  */
 void TaxiLocal::mostrar_tarifa_total(){
     cout << "La tarifa total del viaje " << get_id() << " fue de: " << calc_tarifa_total() << endl;
 }
 
 /**
- *mostrar_viaje muestra las características del viaje en cuestión
+ *mostrar_viaje muestra las características del viaje
+ *en cuestión
  *
- *crea una salida de texto donde también se utilizan getters para obtener los atributos del objeto,
- *pero también manda a llamar a la función calc_tarifa_hora_concurrida para mostrar la tarifa por kilometro
+ *Crea una salida de texto donde también se utilizan getters
+ *para obtener los atributos del objeto, pero también manda a
+ *llamar a la función calc_tarifa_hora_concurrida para mostrar
+ *la tarifa por kilómetro
+ *
+ *@param No se tienen parámetros
+ *
+ *@return No se devuelve ningún valor
  */
 void TaxiLocal::mostrar_viaje(){
-    if (get_horario_concurrido() == true){
-        cout << "El viaje en " << get_tipo() << " con id " << get_id() << " si se encuentra en un horario concurrido. Tiene una tarifa de " << calc_tarifa_hora_concurrida() << " pesos por kilometro y va desde " << get_direccion_origen() << " hasta " << get_direccion_destino() << " (" << get_kilometros() << " km) " << endl;
+    if(get_horario_concurrido() == false){
+        cout << "El viaje en " << get_tipo() << " con id " << get_id() << " no se encuentra en un horario concurrido. Tiene una tarifa de " << calc_tarifa_hora_concurrida() << " pesos por kilometro y va desde " << get_direccion_origen() << " hasta " << get_direccion_destino() << " (" << get_kilometros() << " km) " << endl;
     }
     else{
-        cout << "El viaje en " << get_tipo() << " con id " << get_id() << " no se encuentra en un horario concurrido. Tiene una tarifa de " << calc_tarifa_hora_concurrida() << " pesos por kilometro y va desde " << get_direccion_origen() << " hasta " << get_direccion_destino() << " (" << get_kilometros() << " km) " << endl;
+        cout << "El viaje en " << get_tipo() << " con id " << get_id() << " si se encuentra en un horario concurrido. Tiene una tarifa de " << calc_tarifa_hora_concurrida() << " pesos por kilometro y va desde " << get_direccion_origen() << " hasta " << get_direccion_destino() << " (" << get_kilometros() << " km) " << endl;
     }
 }
 
@@ -234,8 +281,8 @@ class TaxiInterurbano: public Viaje{
         };
         //Constructor
         TaxiInterurbano(int i_d, string tipo_viaje, string direccion_o, string direccion_d, double km, double tarifa_km, int num_pas, int cant_equip):Viaje(i_d, tipo_viaje, direccion_o, direccion_d, km, tarifa_km){
-            int num_pasajeros = num_pas;
-            int cant_equipaje = cant_equip;
+            num_pasajeros = num_pas;
+            cant_equipaje = cant_equip;
         }
 
         //Funciones
@@ -259,9 +306,16 @@ class TaxiInterurbano: public Viaje{
 //Funciones de la clase TaxiInterurbano
 
 /**
- *calc_tarifa_por_pasajero calcula el aumento porcentual que debe hacerse a la tarifa por kilometro dependiendo del numero de pasajeros
+ *calc_tarifa_por_pasajero calcula el aumento porcentual que debe
+ *hacerse a la tarifa por kilometro dependiendo del numero de pasajeros
  *
- *el número de pasajeros se multiplica por 0.25, porque cada uno involucra un aumento del 25% en el precio
+ *El número de pasajeros se multiplica por 0.25, porque cada uno
+ *involucra un aumento del 25% en el precio
+ *
+ *@param No se tienen parámetros
+ *
+ *@return double con el porcentaje de la tarifa que se debe cobrar
+ *extra por cada pasajero
  */
 double TaxiInterurbano::calc_tarifa_por_pasajero(){
     if (get_num_pasajeros() == 1){
@@ -273,27 +327,47 @@ double TaxiInterurbano::calc_tarifa_por_pasajero(){
 }
 
 /**
- *mostrar_tarifa_por_pasajero muestra el aumento añadido a la tarifa por kilometros debido al numero de pasajeros
+ *mostrar_tarifa_por_pasajero muestra el aumento añadido a la tarifa
+ *por kilometros debido al numero de pasajeros
  *
- *crea una salida de texto donde también se manda a llamar a la función calc_tarifa_por_pasajero
+ *Crea una salida de texto donde también se manda a llamar a la
+ *función calc_tarifa_por_pasajero
+ *
+ *@param No se tienen parámetros
+ *
+ *@return No se devuelve ningún valor
  */
 void TaxiInterurbano::mostrar_tarifa_por_pasajero(){
     cout << "La tarifa aplicada por número pasajeros en el viaje " << get_id() << " fue de: " << calc_tarifa_por_pasajero() << "%" << endl;
     }
 
 /**
- *calc_tarifa_por_equipaje calcula el aumento porcentual que debe hacerse a la tarifa por kilometro dependiendo de la cantidad de equipaje
+ *calc_tarifa_por_equipaje calcula el aumento porcentual que debe
+ *hacerse a la tarifa por kilometro dependiendo de la cantidad de
+ *equipaje
  *
- *La cantidad de equipaje se multiplica por 0.05, porque cada uno involucra un aumento del 5% en el precio
+ *La cantidad de equipaje se multiplica por 0.05, porque cada uno
+ *involucra un aumento del 5% en el precio
+ *
+ *@param No se tienen parámetros
+ *
+ *@return double con el porcentaje de la tarifa que se debe aumentar
+ *debido a la cantidad de equipaje
  */
 double TaxiInterurbano::calc_tarifa_por_equipaje(){
     return ((get_cant_equipaje()*0.05));
 }
 
 /**
- *mostrar_tarifa_por_equipaje muestra el aumento añadido a la tarifa por kilometros debido a la cantidad de equipaje
+ *mostrar_tarifa_por_equipaje muestra el aumento añadido a la
+ *tarifa por kilometros debido a la cantidad de equipaje
  *
- *crea una salida de texto donde también se manda a llamar a la función calc_tarifa_por_equipaje
+ *crea una salida de texto donde también se manda a llamar a
+ *la función calc_tarifa_por_equipaje
+ *
+ *@param No se tienen parámetros
+ *
+ *@return No se devuelve ningún valor
  */
 void TaxiInterurbano::mostrar_tarifa_por_equipaje(){
     cout << "La tarifa aplicada por cantidad de equipaje en el viaje " << get_id() << " fue de " << calc_tarifa_por_equipaje() << "%" << endl;
@@ -302,16 +376,27 @@ void TaxiInterurbano::mostrar_tarifa_por_equipaje(){
 /**
  *calc_tarifa_total calcula el costo total del viaje
  *
- *Se suman los porcentajes añadidos y se multiplica tanto por la tarifa por kilometro como por el total de kilometros
+ *Se suman los porcentajes añadidos y se multiplica tanto por
+ *la tarifa por kilometro como por el total de kilometros
+ *
+ *@param No se tienen parámetros
+ *
+ *@return double con el valor total de la tarifa que se cobró al usuario
  */
 double TaxiInterurbano::calc_tarifa_total(){
     return ((calc_tarifa_por_equipaje() + calc_tarifa_por_pasajero() + 1)*get_tarifa_kilometros()*get_kilometros());
 }
 
 /**
- *mostrar_tarifa_total muestra la tarifa final debido a la cantidad de equipaje y el numero de pasajeros
+ *mostrar_tarifa_total muestra la tarifa final debido a
+ *la cantidad de equipaje y el número de pasajeros
  *
- *crea una salida de texto donde también se manda a llamar a la función calc_tarifa_total
+ *crea una salida de texto donde también se manda a llamar
+ *a la función calc_tarifa_total
+ *
+ *@param No se tienen parámetros
+ *
+ *@return No se devuelve ningún valor
  */
 void TaxiInterurbano::mostrar_tarifa_total(){
     cout << "La tarifa total del viaje " << get_id() << " fue de: " << calc_tarifa_total() << endl;
@@ -320,7 +405,12 @@ void TaxiInterurbano::mostrar_tarifa_total(){
 /**
  *mostrar_viaje muestra las características del viaje en cuestión
  *
- *crea una salida de texto donde también se utilizan getters para obtener los atributos del objeto,
+ *crea una salida de texto donde también se utilizan getters
+ *para obtener los atributos del objeto
+ *
+ *@param No se tienen parámetros
+ *
+ *@return No se devuelve ningún valor
  */
 void TaxiInterurbano::mostrar_viaje(){
     cout << "El viaje en " << get_tipo() << " con id " << get_id() << " tiene " << get_num_pasajeros() << " pasajeros con " << get_cant_equipaje() << " maletas. Ademas, tiene una tarifa de " << get_tarifa_kilometros() << " pesos por kilometro y va desde " << get_direccion_origen() << " hasta " << get_direccion_destino() << " (" << get_kilometros() << " km) " << endl;
@@ -350,7 +440,7 @@ class Flete : public Viaje{
         };
         //Constructor
         Flete(int i_d, string tipo_viaje, string direccion_o, string direccion_d, double km, double tarifa_km, double peso_car):Viaje(i_d, tipo_viaje, direccion_o, direccion_d, km, tarifa_km){
-            double peso_carga = peso_car;
+            peso_carga = peso_car;
         }
         //Funciones
         double calc_tarifa_por_peso();
@@ -367,9 +457,16 @@ class Flete : public Viaje{
 //Funciones
 
 /**
- *calc_tarifa_por_peso calcula el aumento porcentual que debe hacerse a la tarifa por kilometro dependiendo de la cantidad de peso
+ *calc_tarifa_por_peso calcula el aumento porcentual que debe
+ *hacerse a la tarifa por kilometro dependiendo de la cantidad de peso
  *
- *El peso se divide entre 200 porque es cada 200kg que aumenta 25% la cuota.
+ *El peso se divide entre 200 porque es cada 200kg que aumenta
+ *25% la cuota.
+ *
+ *@param No se tienen parámetros
+ *
+ *@return double con el porcentaje de la tarifa que se debe cobrar
+ *extra por el peso.
  */
 double Flete::calc_tarifa_por_peso(){
     if ((get_peso_carga()-200) <= 0){
@@ -381,9 +478,15 @@ double Flete::calc_tarifa_por_peso(){
 }
 
 /**
- *mostrar_tarifa_por_peso muestra el aumento añadido a la tarifa por kilometros debido a la cantidad de peso
+ *mostrar_tarifa_por_peso muestra el aumento añadido a la tarifa
+ *por kilometros debido a la cantidad de peso
  *
- *crea una salida de texto donde también se manda a llamar a la función calc_tarifa_por_peso
+ *Crea una salida de texto donde también se manda a llamar a la
+ *función calc_tarifa_por_peso
+ *
+ *@param No se tienen parámetros
+ *
+ *@return No se devuelve ningún valor
  */
 void Flete::mostrar_tarifa_por_peso(){
     cout << "La tarifa aplicada por peso para el viaje " << get_id() << " fue de " << calc_tarifa_por_peso() << endl;
@@ -392,16 +495,28 @@ void Flete::mostrar_tarifa_por_peso(){
 /**
  *calc_tarifa_total calcula el costo total del viaje
  *
- *Se añaden los porcentajes y se multiplica tanto por la tarifa por kilometro como por el total de kilometros
+ *Se añaden los porcentajes y se multiplica tanto por
+ *la tarifa por kilometro como por el total de kilometros
+ *
+ *@param No se tienen parámetros
+ *
+ *@return double con el valor total de la tarifa que se cobró
+ *al usuario
  */
 double Flete::calc_tarifa_total(){
     return (get_kilometros()*get_tarifa_kilometros()*(1+calc_tarifa_por_peso()));
 }
 
 /**
- *mostrar_tarifa_total muestra la tarifa final debido a la cantidad de equipaje peso y kilometros
+ *mostrar_tarifa_total muestra la tarifa final debido a la
+ *cantidad de equipaje peso y kilometros
  *
- *crea una salida de texto donde también se manda a llamar a la función calc_tarifa_total
+ *Crea una salida de texto donde también se manda a llamar
+ *a la función calc_tarifa_total
+ *
+ *@param No se tienen parámetros
+ *
+ *@return No se devuelve ningún valor
  */
 void Flete::mostrar_tarifa_total(){
     cout << "La tarifa total para el viaje " << get_id() << " fue de " << calc_tarifa_total() << endl;
@@ -410,7 +525,12 @@ void Flete::mostrar_tarifa_total(){
 /**
  *mostrar_viaje muestra las características del viaje en cuestión
  *
- *crea una salida de texto donde también se utilizan getters para obtener los atributos del objeto,
+ *crea una salida de texto donde también se utilizan getters para
+ *obtener los atributos del objeto.
+ *
+ *@param No se tienen parámetros
+ *
+ *@return No se devuelve ningún valor
  */
 void Flete::mostrar_viaje(){
     cout << "El " << get_tipo() << " con id " << get_id() << " tiene una tarifa de " << get_tarifa_kilometros() << " pesos por kilometro y va desde " << get_direccion_origen() << " hasta " << get_direccion_destino() << " (" << get_kilometros()<< " km) " << endl;
